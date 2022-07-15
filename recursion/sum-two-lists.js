@@ -1,5 +1,3 @@
-import LinkList from "../ds/link-list/link-list.js";
-
 class ListNode {
   constructor(val, next) {
     this.val = val === undefined ? 0 : val;

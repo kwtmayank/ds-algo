@@ -1,7 +1,8 @@
-export default class Element {
-  constructor(value, next = null) {
+export default class Node {
+  constructor(value, next = null, prev = null) {
     this.value = value;
     this.next = next;
+    this.prev = prev;
   }
 
   toString(callback) {

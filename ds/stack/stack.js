@@ -1,4 +1,4 @@
-import Element from "../element.js";
+import Node from "../node.js";
 export default class Stack {
   constructor() {
     this.size = 0;
@@ -7,13 +7,13 @@ export default class Stack {
   }
 
   push(value) {
-    const element = new Element(value);
+    const newNode = new Node(value);
     if (this.first == null) {
-      this.first = element;
-      this.last = element;
+      this.first = newNode;
+      this.last = newNode;
     } else {
       let temp = this.first;
-      this.first = element;
+      this.first = newNode;
       this.first.next = temp;
     }
     this.size++;
