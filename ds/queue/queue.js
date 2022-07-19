@@ -1,36 +1,36 @@
-import Element from "../element.js";
+import Node from "../node.js";
 export default class Queue {
   constructor() {
     this.size = 0;
-    this.head = null;
-    this.tail = null;
+    this.first = null;
+    this.last = null;
   }
 
   enqueue(value) {
-    const element = new Element(value);
-    if (this.head == null) {
-      this.head = element;
-      this.tail = element;
+    const newNode = new Node(value);
+    if (this.first == null) {
+      this.first = newNode;
+      this.last = newNode;
     } else {
-      this.tail.next = element;
-      this.tail = element;
+      this.last.next = newNode;
+      this.last = newNode;
     }
-    return ++this.size;
+    this.size++ ;
   }
 
   dequeue() {
-    if (this.head == null) return null;
-    let temp = this.head;
-    if (this.head === this.tail) {
-      this.tail = null;
+    if (this.first == null) return null;
+    let temp = this.first;
+    if (this.first === this.last) {
+      this.last = null;
     }
-    this.head = this.head.next;
+    this.first = this.first.next;
     this.size--;
     return temp.value;
   }
 
   peek() {
-    if (this.head == null) return null;
-    return this.head.value;
+    if (this.first == null) return null;
+    return this.first.value;
   }
 }
