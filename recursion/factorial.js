@@ -8,6 +8,14 @@ function factorial(n) {
   return result;
 }
 
+function factorialUsingLoop(n) {
+  let result = 1;
+  for (let i = n; i >= 1; i--) {
+    result = result * i;
+  }
+  return result;
+}
+
 console.time(methodName);
-console.info(factorial(4));
+console.info(factorialUsingLoop(5));
 console.timeEnd(methodName);

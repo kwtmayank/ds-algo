@@ -1,4 +1,4 @@
-class HashTable {
+export default class HashTable {
   constructor(size) {
     this.data = new Array(size);
   }
@@ -46,9 +46,3 @@ class HashTable {
     return keysArr;
   }
 }
-
-const myHashTable = new HashTable(2);
-myHashTable.set("grapes", 10000);
-myHashTable.set("apples", 49);
-
-console.log(myHashTable.keys());
