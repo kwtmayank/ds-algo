@@ -1,11 +1,26 @@
 // program to display fibonacci sequence using recursion
 function fibonacci(num) {
-  //O(2^N) it takes exponential time
+  //O(2^N) it takes exponential time. Can be improved with DP
   if (num < 2) {
     return num;
   } else {
     return fibonacci(num - 1) + fibonacci(num - 2);
   }
+}
+
+function fibonacciMaster() {
+  const cache = {};
+  return function fib(num) {
+    if (num < 2) {
+      return num;
+    }
+    if (cache.hasOwnProperty(num)) {
+      return cache[num];
+    } else {
+      cache[num] = fib(num - 1) + fib(num - 2);
+      return cache[num];
+    }
+  };
 }
 
 function fibonacciUsingLoop(n) {
@@ -24,5 +39,6 @@ const nTerms = 48;
 if (nTerms <= 0) {
   console.log("Enter a positive integer.");
 } else {
-  console.log(fibonacci(nTerms));
+  const fibFn = fibonacciMaster();
+  console.log(fibFn(nTerms));
 }
