@@ -58,7 +58,6 @@ export default class BinarySearchTree {
     }
     return null;
   }
-
   remove(value) {
     if (!this.root) {
       return false;
@@ -134,6 +133,89 @@ export default class BinarySearchTree {
         return true;
       }
     }
+  }
+
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    let result = [];
+    let queue = [];
+
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      result.push(currentNode.value);
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return result;
+  }
+
+  breadthFirstSearchRecursively(queue, result) {
+    if (queue.length === 0) {
+      return result;
+    }
+
+    let currentNode = queue.shift();
+    result.push(currentNode.value);
+
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+
+    return this.breadthFirstSearchRecursively(queue, result);
+  }
+
+  validateBST(root, min, max) {
+    if (!root) return true;
+    if (root.val <= min || root.val >= max) return false;
+    return (
+      this.validateBST(root.left, min, root.val) &&
+      this.validateBST(root.right, root.val, max)
+    );
+  }
+
+  depthFirstSearchInOrder(node, result) {
+    if (node.left) {
+      this.depthFirstSearchInOrder(node.left, result);
+    }
+    result.push(node.value);
+    if (node.right) {
+      this.depthFirstSearchInOrder(node.right, result);
+    }
+    return result;
+  }
+
+  depthFirstSearchInPreOrder(node, result) {
+    result.push(node.value);
+    if (node.left) {
+      this.depthFirstSearchInPreOrder(node.left, result);
+    }
+    if (node.right) {
+      this.depthFirstSearchInPreOrder(node.right, result);
+    }
+    return result;
+  }
+
+  depthFirstSearchInPostOrder(node, result) {
+    if (node.left) {
+      this.depthFirstSearchInPostOrder(node.left, result);
+    }
+    if (node.right) {
+      this.depthFirstSearchInPostOrder(node.right, result);
+    }
+    result.push(node.value);
+    return result;
   }
 
   traverse(node) {
