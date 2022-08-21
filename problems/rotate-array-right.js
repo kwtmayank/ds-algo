@@ -42,7 +42,7 @@ function reverse(arr, start, end) {
   }
 }
 
-let nums1 = [-1, -100, 3, 99];
+let nums1 = [1, 2, 3, 4, 5];
 //[3,99,-1,-100]
-rotate(nums1, 2);
+rotate(nums1, 4);
 console.log(nums1);
