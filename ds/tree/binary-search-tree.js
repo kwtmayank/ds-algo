@@ -4,6 +4,7 @@ export default class BinarySearchTree {
   constructor() {
     this.root = null;
   }
+
   insert(value) {
     const newNode = new TreeNode(value);
     if (!this.root) {

@@ -1,5 +1,4 @@
 function moveNegatives(arr) {
-  let lastPositiveIndex = 0;
   let temp = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] > 0) {
